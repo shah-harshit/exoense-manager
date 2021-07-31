@@ -6,7 +6,7 @@ import {
   Button,
 } from "@material-ui/core";
 import React, { useState } from "react";
-import { PERSONS } from "../../constants";
+import { BASE_URL, PERSONS } from "../../constants";
 import { SnackBar } from "../snackbar/SnackBar";
 import axios from "axios";
 
@@ -55,7 +55,7 @@ export const FormComponent = (props) => {
     setReason("");
 
     await axios
-      .post("/transactions", data, {
+      .post(BASE_URL + "/transactions", data, {
         headers: {
           "Content-type": "application/json",
         },

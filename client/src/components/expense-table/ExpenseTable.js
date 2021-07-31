@@ -6,6 +6,7 @@ import { Delete } from "@material-ui/icons";
 import { SnackBar } from "../snackbar/SnackBar";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import axios from "axios";
+import { BASE_URL } from "../../constants";
 
 export const ExpenseTable = (props) => {
   const { rowData } = props;
@@ -16,7 +17,7 @@ export const ExpenseTable = (props) => {
 
   const getEntries = () => {
     axios
-      .get("/transactions")
+      .get(BASE_URL + "/transactions")
       .then((res) => {
         const tempRows = [];
         res.data.length > 0 &&
@@ -41,7 +42,9 @@ export const ExpenseTable = (props) => {
 
   const onDeleteTableRow = (deletedRow) => {
     axios
-      .delete("/transactions/delete", { data: { id: deletedRow.id } })
+      .delete(BASE_URL + "/transactions/delete", {
+        data: { id: deletedRow.id },
+      })
       .then((res) => setSnackBarMessage(res.data.message));
     getEntries();
   };
