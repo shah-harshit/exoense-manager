@@ -1,5 +1,6 @@
 const router = require("express").Router();
-const Transactions = require("../models/transactions");
+const path = require("path");
+const Transactions = require(path.join(__dirname, "../models/transactions"));
 
 // Add transaction
 router.post("/", async (req, res) => {
