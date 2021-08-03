@@ -19,10 +19,8 @@ mongoose
 app.use(cors());
 app.use(express.json());
 
-app.use(
-  "/transactions",
-  require(path.join(__dirname, "./routes/transactions"))
-);
+app.use("/", require(path.join(__dirname, "./routes/transactions")));
+app.use("/", require(path.join(__dirname, "./routes/balance-data")));
 
 const PORT = process.env.PORT || 5000;
 
