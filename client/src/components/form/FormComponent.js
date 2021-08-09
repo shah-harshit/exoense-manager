@@ -6,7 +6,7 @@ import {
   Button,
 } from "@material-ui/core";
 import React, { useState } from "react";
-import { BASE_URL, PERSONS } from "../../constants";
+import { BASE_URL, PERSONS, EXPENSE_OPTIONS } from "../../constants";
 import { SnackBar } from "../snackbar/SnackBar";
 import axios from "axios";
 
@@ -104,15 +104,6 @@ export const FormComponent = (props) => {
         </Grid>
         <Grid item sm={2}>
           <TextField
-            fullWidth
-            disabled
-            label="Action"
-            value="Paid"
-            variant="outlined"
-          />
-        </Grid>
-        <Grid item sm={2}>
-          <TextField
             required
             fullWidth
             label="Amount"
@@ -130,14 +121,14 @@ export const FormComponent = (props) => {
             select
             required
             fullWidth
-            label={"Paid to"}
+            label={"Used for"}
             value={toPerson}
             variant="outlined"
             onChange={(event) => {
               setToPerson(event.target.value);
             }}
           >
-            {PERSONS.map((person, idx) => (
+            {EXPENSE_OPTIONS.map((person, idx) => (
               <MenuItem
                 disabled={fromPerson === person}
                 key={idx}
@@ -152,7 +143,7 @@ export const FormComponent = (props) => {
       <Grid item sm={4}>
         <TextField
           fullWidth
-          label="Enter Reason"
+          label="Enter Description"
           value={reason}
           type="text"
           variant="outlined"
